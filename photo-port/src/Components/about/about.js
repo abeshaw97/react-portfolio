@@ -12,7 +12,7 @@ class About extends Component {
                     <h2 className={classes.heading}>Who Am I?</h2>
                     <div className={classes.About}>
                         <p> My name is <b>Abe Shaw</b> and I am currently Day Trader and I have an online course that teaches other people how to invest <a target="_blank" href="https://www.wealthytradersinvestment.com/"><b>wealthytradersinvestment</b></a>. In 2020 I recieved my Bachelor of Science degree in Advertising Management from Michigan State University. I started this development journey to learn how to code! </p>
-                        <p className={classes.br}>I love exploring new technologies and being a practitioner, I like to stay on top of latest trends. I try to leave every line of code I write more readable, accessible, and modular.
+                        <p className={classes.br}>Contact me @shawabra@msu.edu
                         </p>
                     </div>
                 </ScrollAnimation>
