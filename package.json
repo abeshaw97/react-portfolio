@@ -1,30 +1,42 @@
 {
-  "homepage": "http://abeshaw97.github.io/photo-port",
-  "version": "0.1.0",
+  "name": "developers-portfolio",
+  "description": "A personal static website/portfolio template hosted with GitHub Pages, built to showcase my recent projects.",
+  "homepage": "http://abeshaw97.github.io/home",
+  "version": "2.0.0",
   "private": true,
+  "author": {
+    "name": "Abe Shaw",
+    "email": "shawabra@msu.edu",
+    "url": "https://github.com/abeshaw97"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.2",
+    "gh-pages": "^2.2.0",
+    "jquery": "^3.5.1",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^16.14.0",
+    "react-loading-skeleton": "^2.1.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.4",
+    "react-typist": "^2.0.5",
+    "typescript": "^3.9.7"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "custom-deploy": "node pages.js"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -37,8 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^4.0.0"
   }
 }

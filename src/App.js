@@ -1,41 +1,100 @@
-import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import About from './components/about/About';
-import Education from './components/Education/Education';
-import Interest from './components/skills/Interest'
-import CarouselImages from './components/carousel/CarouselImages.js'
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import {
+  navBar,
+  mainBody,
+  about,
+  repos,
+  leadership,
+  skills,
+  getInTouch,
+  experiences
+} from "./editable-stuff/config.js";
+import MainBody from "./components/home/MainBody";
+import AboutMe from "./components/home/AboutMe";
+import Project from "./components/home/Project";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Skills from "./components/home/Skills";
+// import { Blog } from "./components/blog/Blog";
+// import BlogPost from "./components/blog/BlogPost";
+import GetInTouch from "./components/home/GetInTouch.jsx";
+import Leadership from "./components/home/Leadership.jsx";
 
+import Experience from "./components/home/Experience";
 
-class App extends Component {
+const Home = React.forwardRef((props, ref) => {
+  return (
+    <>
+      <MainBody
+        gradient={mainBody.gradientColors}
+        title={`${mainBody.firstName} ${mainBody.middleName} ${mainBody.lastName}`}
+        message={mainBody.message}
+        icons={mainBody.icons}
+        ref={ref}
+      />
+      {about.show && (
+        <AboutMe
+          heading={about.heading}
+          message={about.message}
+          link={about.imageLink}
+          imgSize={about.imageSize}
+          resume={about.resume}
+        />
+      )}
+      {
+        experiences.show && (
+          <Experience experiences={experiences}/>
+        )
+      }
+      {repos.show && (
+        <Project
+          heading={repos.heading}
+          username={repos.gitHubUsername}
+          length={repos.reposLength}
+          specfic={repos.specificRepos}
+        />
+      )}
+      {leadership.show && (
+        <Leadership
+          heading={leadership.heading}
+          message={leadership.message}
+          img={leadership.images}
+          imageSize={leadership.imageSize}
+        />
+      )}
+      {skills.show && (
+        <Skills
+          heading={skills.heading}
+          hardSkills={skills.hardSkills}
+          softSkills={skills.softSkills}
+        />
+      )}
+      
+    </>
+  );
+});
 
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <div className="side">
-            <nav className="navbar side navbar-expand-lg navbar-light p-0" >
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" style={{ zIndex: '1' }}>
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <Sidebar />
-              </div>
-            </nav>
-          </div>
-          <div className="main">
-            <div>
+const App = () => {
+  const titleRef = React.useRef();
 
-              <CarouselImages />
-            </div>
-            <About />
-            <Interest />
-            <Education />
-          </div>
-        </div>
-      </Router>
-    );
-  }
-}
+  return (
+    <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
+      {navBar.show && <Navbar ref={titleRef} />}
+      <Route path="/" exact component={() => <Home ref={titleRef} />} />
+      {/* {false && <Route path="/blog" exact component={Blog} />}
+      {false && <Route path="/blog/:id" component={BlogPost} />} */}
+      <Footer>
+        {getInTouch.show && (
+          <GetInTouch
+            heading={getInTouch.heading}
+            message={getInTouch.message}
+            email={getInTouch.email}
+          />
+        )}
+      </Footer>
+    </BrowserRouter>
+  );
+};
 
 export default App;
